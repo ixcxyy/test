@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choose a Fruit</h1>
+    
+    <button onclick="sendSelection('Apple')">Apple</button>
+    <button onclick="sendSelection('Banana')">Banana</button>
+
+    <script>
+        function sendSelection(fruit) {
+            const webhookUrl = 'https://discord.com/api/webhooks/1118471176692437114/eFN7KO8wJ5zVAE5H1qog9AX45XbvDziRPo5WK84SkbIWh9x69rZdgNMu6NIwtQHi0q_v'; // Replace with your Discord webhook URL
+
+            const data = {
+                content: `User selected: ${fruit}`
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`You selected: ${fruit}`);
+                } else {
+                    alert('There was an error sending your selection.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+</body>
+</html>
