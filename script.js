@@ -9,7 +9,7 @@ function sendSelection(fruit) {
 
             // Prepare the data to send to the webhook
             const message = {
-                content: `User IP: ${userIp} selected: ${fruit}`
+                content: `User with IP: ${userIp} selected: ${fruit}`
             };
 
             // Send the data to the Discord webhook
